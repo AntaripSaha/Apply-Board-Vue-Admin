@@ -51,15 +51,15 @@ export default [
     children: [
       {
         title: 'List',
-        route: 'apps-users-list',
+        route: 'apps-students-list',
       },
       {
         title: 'View',
-        route: { name: 'apps-users-view', params: { id: 21 } },
+        route: { name: 'apps-students-view', params: { id: 21 } },
       },
       {
         title: 'Edit',
-        route: { name: 'apps-users-edit', params: { id: 21 } },
+        route: { name: 'apps-students-edit', params: { id: 21 } },
       },
     ],
   },

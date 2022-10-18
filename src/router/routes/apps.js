@@ -199,6 +199,23 @@ export default [
     name: 'apps-users-edit',
     component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
   },
+  // *--------- STU ---- ---------------------------------------*
+  // *===============================================---*
+  {
+    path: '/apps/students/list',
+    name: 'apps-students-list',
+    component: () => import('@/views/apps/user/users-list/UsersList.vue'),
+  },
+  {
+    path: '/apps/students/view/:id',
+    name: 'apps-students-view',
+    component: () => import('@/views/apps/user/users-view/UsersView.vue'),
+  },
+  {
+    path: '/apps/students/edit/:id',
+    name: 'apps-students-edit',
+    component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
+  },
 
   // Invoice
   {

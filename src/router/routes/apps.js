@@ -199,6 +199,24 @@ export default [
     name: 'apps-users-edit',
     component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
   },
+  // *===============================================---*
+  // *--------- USER ---- ---------------------------------------*
+  // *===============================================---*
+  {
+    path: '/apps/agent/list',
+    name: 'apps-agent-list',
+    component: () => import('@/views/apps/user/users-list/UsersList.vue'),
+  },
+  {
+    path: '/apps/agent/view/:id',
+    name: 'apps-agent-view',
+    component: () => import('@/views/apps/user/users-view/UsersView.vue'),
+  },
+  {
+    path: '/apps/agent/edit/:id',
+    name: 'apps-agent-edit',
+    component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
+  },
   // *--------- STU ---- ---------------------------------------*
   // *===============================================---*
   {

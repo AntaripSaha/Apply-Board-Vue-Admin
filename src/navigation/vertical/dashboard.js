@@ -24,6 +24,24 @@ export default [
     ],
   },
   {
+    title: 'Agent',
+    icon: 'UserPlusIcon',
+    children: [
+      {
+        title: 'List',
+        route: 'apps-agent-list',
+      },
+      {
+        title: 'View',
+        route: { name: 'apps-agent-view', params: { id: 21 } },
+      },
+      {
+        title: 'Edit',
+        route: { name: 'apps-agent-edit', params: { id: 21 } },
+      },
+    ],
+  },
+  {
     title: 'University',
     icon: 'BookOpenIcon',
     children: [

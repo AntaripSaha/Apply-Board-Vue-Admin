@@ -163,7 +163,7 @@
       <template #cell(actions)="data">
 
         <div class="text-nowrap">
-          <feather-icon
+          <!-- <feather-icon
             :id="`invoice-row-${data.item.id}-send-icon`"
             icon="SendIcon"
             class="cursor-pointer"
@@ -173,7 +173,7 @@
             title="Send Invoice"
             class="cursor-pointer"
             :target="`invoice-row-${data.item.id}-send-icon`"
-          />
+          /> -->
 
           <feather-icon
             :id="`invoice-row-${data.item.id}-preview-icon`"
@@ -183,7 +183,7 @@
             @click="$router.push({ name: 'apps-invoice-preview', params: { id: data.item.id }})"
           />
           <b-tooltip
-            title="Preview Invoice"
+            title="View Details"
             :target="`invoice-row-${data.item.id}-preview-icon`"
           />
 
@@ -214,10 +214,10 @@
               <feather-icon icon="TrashIcon" />
               <span class="align-middle ml-50">Delete</span>
             </b-dropdown-item>
-            <b-dropdown-item>
+            <!-- <b-dropdown-item>
               <feather-icon icon="CopyIcon" />
               <span class="align-middle ml-50">Duplicate</span>
-            </b-dropdown-item>
+            </b-dropdown-item> -->
           </b-dropdown>
         </div>
       </template>

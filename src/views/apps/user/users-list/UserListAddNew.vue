@@ -206,7 +206,7 @@
           </validation-provider>
 
           <!-- Plan -->
-          <validation-provider
+          <!-- <validation-provider
             #default="validationContext"
             name="Plan"
             rules="required"
@@ -228,7 +228,7 @@
                 {{ validationContext.errors[0] }}
               </b-form-invalid-feedback>
             </b-form-group>
-          </validation-provider>
+          </validation-provider> -->
 
           <!-- Form Actions -->
           <div class="d-flex mt-2">

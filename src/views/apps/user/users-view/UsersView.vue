@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!-- Alert: No item found -->
     <b-alert
       variant="danger"
@@ -26,23 +25,23 @@
       <b-row>
         <b-col
           cols="12"
-          xl="9"
-          lg="8"
-          md="7"
+          xl="12"
+          lg="12"
+          md="12"
         >
           <user-view-user-info-card :user-data="userData" />
         </b-col>
-        <b-col
+        <!-- <b-col
           cols="12"
           md="5"
           xl="3"
           lg="4"
         >
           <user-view-user-plan-card />
-        </b-col>
+        </b-col> -->
       </b-row>
 
-      <b-row>
+      <!-- <b-row>
         <b-col
           cols="12"
           lg="6"
@@ -55,11 +54,9 @@
         >
           <user-view-user-permissions-card />
         </b-col>
-      </b-row>
-
+      </b-row> -->
       <invoice-list />
     </template>
-
   </div>
 </template>
 

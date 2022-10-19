@@ -239,22 +239,22 @@ export default [
   {
     path: '/apps/university/list',
     name: 'apps-university-list',
-    component: () => import('@/views/apps/invoice/invoice-list/InvoiceList.vue'),
+    component: () => import('@/views/apps/university/invoice-list/InvoiceList.vue'),
   },
   {
     path: '/apps/university/preview/:id',
     name: 'apps-university-preview',
-    component: () => import('@/views/apps/invoice/invoice-preview/InvoicePreview.vue'),
+    component: () => import('@/views/apps/university/invoice-preview/InvoicePreview.vue'),
   },
   {
     path: '/apps/university/add/',
     name: 'apps-university-add',
-    component: () => import('@/views/apps/invoice/invoice-add/InvoiceAdd.vue'),
+    component: () => import('@/views/apps/university/invoice-add/InvoiceAdd.vue'),
   },
   {
     path: '/apps/university/edit/:id',
     name: 'apps-university-edit',
-    component: () => import('@/views/apps/invoice/invoice-edit/InvoiceEdit.vue'),
+    component: () => import('@/views/apps/university/invoice-edit/InvoiceEdit.vue'),
   },
   // Program
   {

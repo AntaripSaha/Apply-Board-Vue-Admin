@@ -55,7 +55,8 @@
           <user-view-user-permissions-card />
         </b-col>
       </b-row> -->
-      <invoice-list />
+      <!-- <invoice-list /> -->
+      <user-list />
     </template>
   </div>
 </template>
@@ -73,6 +74,7 @@ import UserViewUserInfoCard from './UserViewUserInfoCard.vue'
 import UserViewUserPlanCard from './UserViewUserPlanCard.vue'
 import UserViewUserTimelineCard from './UserViewUserTimelineCard.vue'
 import UserViewUserPermissionsCard from './UserViewUserPermissionsCard.vue'
+import UserList from '../users-list/UsersList.vue'
 
 export default {
   components: {
@@ -80,6 +82,7 @@ export default {
     BCol,
     BAlert,
     BLink,
+    UserList,
 
     // Local Components
     UserViewUserInfoCard,

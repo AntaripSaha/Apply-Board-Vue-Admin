@@ -200,7 +200,7 @@ export default [
     component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
   },
   // *===============================================---*
-  // *--------- USER ---- ---------------------------------------*
+  // *--------- AGENT ---- ---------------------------------------*
   // *===============================================---*
   {
     path: '/apps/agent/list',
@@ -217,7 +217,7 @@ export default [
     name: 'apps-agent-edit',
     component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
   },
-  // *--------- STU ---- ---------------------------------------*
+  // *--------- STUDENT ---- ---------------------------------------*
   // *===============================================---*
   {
     path: '/apps/students/list',
@@ -235,25 +235,46 @@ export default [
     component: () => import('@/views/apps/user/users-edit/UsersEdit.vue'),
   },
 
-  // Invoice
+  // University
   {
-    path: '/apps/invoice/list',
-    name: 'apps-invoice-list',
+    path: '/apps/university/list',
+    name: 'apps-university-list',
     component: () => import('@/views/apps/invoice/invoice-list/InvoiceList.vue'),
   },
   {
-    path: '/apps/invoice/preview/:id',
-    name: 'apps-invoice-preview',
+    path: '/apps/university/preview/:id',
+    name: 'apps-university-preview',
     component: () => import('@/views/apps/invoice/invoice-preview/InvoicePreview.vue'),
   },
   {
-    path: '/apps/invoice/add/',
-    name: 'apps-invoice-add',
+    path: '/apps/university/add/',
+    name: 'apps-university-add',
     component: () => import('@/views/apps/invoice/invoice-add/InvoiceAdd.vue'),
   },
   {
-    path: '/apps/invoice/edit/:id',
-    name: 'apps-invoice-edit',
+    path: '/apps/university/edit/:id',
+    name: 'apps-university-edit',
+    component: () => import('@/views/apps/invoice/invoice-edit/InvoiceEdit.vue'),
+  },
+  // Program
+  {
+    path: '/apps/program/list',
+    name: 'apps-program-list',
+    component: () => import('@/views/apps/invoice/invoice-list/InvoiceList.vue'),
+  },
+  {
+    path: '/apps/program/preview/:id',
+    name: 'apps-program-preview',
+    component: () => import('@/views/apps/invoice/invoice-preview/InvoicePreview.vue'),
+  },
+  {
+    path: '/apps/program/add/',
+    name: 'apps-program-add',
+    component: () => import('@/views/apps/invoice/invoice-add/InvoiceAdd.vue'),
+  },
+  {
+    path: '/apps/program/edit/:id',
+    name: 'apps-program-edit',
     component: () => import('@/views/apps/invoice/invoice-edit/InvoiceEdit.vue'),
   },
 ]

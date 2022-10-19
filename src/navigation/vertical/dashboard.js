@@ -13,14 +13,6 @@ export default [
         title: 'List',
         route: 'apps-users-list',
       },
-      {
-        title: 'View',
-        route: { name: 'apps-users-view', params: { id: 21 } },
-      },
-      {
-        title: 'Edit',
-        route: { name: 'apps-users-edit', params: { id: 21 } },
-      },
     ],
   },
   {
@@ -30,36 +22,6 @@ export default [
       {
         title: 'List',
         route: 'apps-agent-list',
-      },
-      {
-        title: 'View',
-        route: { name: 'apps-agent-view', params: { id: 21 } },
-      },
-      {
-        title: 'Edit',
-        route: { name: 'apps-agent-edit', params: { id: 21 } },
-      },
-    ],
-  },
-  {
-    title: 'University',
-    icon: 'BookOpenIcon',
-    children: [
-      {
-        title: 'List',
-        route: 'apps-invoice-list',
-      },
-      {
-        title: 'Preview',
-        route: { name: 'apps-invoice-preview', params: { id: 4987 } },
-      },
-      {
-        title: 'Edit',
-        route: { name: 'apps-invoice-edit', params: { id: 4987 } },
-      },
-      {
-        title: 'Add',
-        route: { name: 'apps-invoice-add' },
       },
     ],
   },
@@ -71,13 +33,33 @@ export default [
         title: 'List',
         route: 'apps-students-list',
       },
+    ],
+  },
+  {
+    title: 'University',
+    icon: 'BookOpenIcon',
+    children: [
       {
-        title: 'View',
-        route: { name: 'apps-students-view', params: { id: 21 } },
+        title: 'List',
+        route: 'apps-university-list',
       },
       {
-        title: 'Edit',
-        route: { name: 'apps-students-edit', params: { id: 21 } },
+        title: 'Add',
+        route: { name: 'apps-university-add' },
+      },
+    ],
+  },
+  {
+    title: 'Program',
+    icon: 'BookIcon',
+    children: [
+      {
+        title: 'List',
+        route: 'apps-program-list',
+      },
+      {
+        title: 'Add',
+        route: { name: 'apps-program-add' },
       },
     ],
   },

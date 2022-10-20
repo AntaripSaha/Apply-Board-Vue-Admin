@@ -11,14 +11,14 @@
 
 <script>
 import { BCardText } from 'bootstrap-vue'
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
+// import BCardCode from '@core/components/b-card-code/BCardCode.vue'
 import { quillEditor } from 'vue-quill-editor'
 import { codeSnow } from './code'
 
 export default {
   components: {
     quillEditor,
-    BCardCode,
+    // BCardCode,
     BCardText,
   },
   data() {

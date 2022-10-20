@@ -20,6 +20,9 @@
             <b-card-body
               class="invoice-padding pt-0"
             >
+              <h3 class="mb-2">
+                University Informations
+              </h3>
               <b-row class="invoice-spacing">
 
                 <!-- Col: Invoice To -->
@@ -28,13 +31,50 @@
                   xl="6"
                   class="mb-lg-1"
                 >
-                  <h6 class="mb-2">
-                    University Informations
-                  </h6>
 
                   <!-- University Informations-->
                   <b-form-group
                     label="University Name"
+                    label-for="largeInput"
+                  >
+                    <b-form-input
+                      id="largeInput"
+                      size="lg"
+                      placeholder="Large Input"
+                    />
+                  </b-form-group>
+                  <b-form-group
+                    label="Founded Years"
+                    label-for="foundedyears"
+                  >
+                    <b-form-input
+                      id="foundedyears"
+                      size="lg"
+                      placeholder="Large Input"
+                    />
+                  </b-form-group>
+                  <b-form-group
+                    label="School ID"
+                    label-for="largeInput"
+                  >
+                    <b-form-input
+                      id="largeInput"
+                      size="lg"
+                      placeholder="Large Input"
+                    />
+                  </b-form-group>
+                  <b-form-group
+                    label="Provider ID"
+                    label-for="largeInput"
+                  >
+                    <b-form-input
+                      id="largeInput"
+                      size="lg"
+                      placeholder="Large Input"
+                    />
+                  </b-form-group>
+                  <b-form-group
+                    label="Identification Type"
                     label-for="largeInput"
                   >
                     <b-form-input
@@ -49,6 +89,34 @@
                   xl="6"
                   class="mb-lg-1"
                 >
+                  <b-form-group
+                    label="Avg. Application Fees"
+                    label-for="avgApplicationFee"
+                  >
+                    <b-form-input
+                      id="avgApplicationFee"
+                      size="lg"
+                      placeholder="Application Fees"
+                    />
+                  </b-form-group><b-form-group
+                    label="Avg. Graduate Program"
+                    label-for="largeInput"
+                  >
+                    <b-form-input
+                      id="largeInput"
+                      size="lg"
+                      placeholder="Large Input"
+                    />
+                  </b-form-group><b-form-group
+                    label="Avg. Under Graduate Program"
+                    label-for="largeInput"
+                  >
+                    <b-form-input
+                      id="largeInput"
+                      size="lg"
+                      placeholder="Large Input"
+                    />
+                  </b-form-group>
                   <quill-editor-snow />
                 </b-col>
               </b-row>

@@ -38,6 +38,7 @@
                   >
                     <b-form-input
                       id="name"
+                      v-model="universityName"
                       size="lg"
                       placeholder="University Name"
                     />
@@ -48,37 +49,45 @@
                   >
                     <b-form-input
                       id="foundedyears"
+                      v-model="foundedYears"
                       size="lg"
                       placeholder="Founded Years"
                     />
                   </b-form-group>
                   <b-form-group
-                    label="Institution Type"
-                    label-for="largeInput"
+                    label="University Type"
+                    label-for="type"
                   >
                     <b-form-input
-                      id="InstitutionType"
+                      id="type"
+                      v-model="universityType"
                       size="lg"
-                      placeholder="Institution Type"
+                      placeholder="University Type"
                     />
                   </b-form-group>
+                  <b-form-group
+                    label="Gallery"
+                    label-for="type"
+                  >
+                    <b-form-file
+                      v-model="files"
+                      placeholder="Choose a file or drop it here..."
+                      drop-placeholder="Drop file here..."
+                      multiple
+                    />
+                  </b-form-group>
+
                 </b-col>
                 <b-col
                   cols="12"
                   xl="6"
                   class="mb-lg-1"
                 >
-                  <b-form-group
-                    label="Avg. Application Fees"
-                    label-for="avgApplicationFee"
-                  >
-                    <b-form-input
-                      id="avgApplicationFee"
-                      size="lg"
-                      placeholder="Application Fees"
+                  <template>
+                    <quill-editor
+                      v-model="universityDescription"
                     />
-                  </b-form-group>
-                  <quill-editor-snow />
+                  </template>
                 </b-col>
               </b-row>
             </b-card-body>
@@ -104,7 +113,6 @@
                     <!-- ? Flex to keep separate width for XIcon and SettingsIcon -->
                     <!-- Form Input Fields OR content inside bordered area  -->
                     <!-- ? Flex to keep separate width for XIcon and SettingsIcon -->
-
                     <div class="d-flex border rounded">
                       <b-row class="flex-grow-1 p-2">
                         <!-- Single Item Form Headers -->
@@ -133,18 +141,9 @@
                           >
                             <b-form-input
                               id="programName"
+                              v-model="programName"
                               size="lg"
                               placeholder="Program Name"
-                            />
-                          </b-form-group>
-                          <b-form-group
-                            label="Program Level"
-                            label-for="programLevel"
-                          >
-                            <b-form-input
-                              id="programLevel"
-                              size="lg"
-                              placeholder="Program Level"
                             />
                           </b-form-group>
                           <b-form-group
@@ -153,19 +152,46 @@
                           >
                             <b-form-input
                               id="programIntake"
+                              v-model="programIntake"
                               size="lg"
                               placeholder="Program Intake"
+                            />
+                          </b-form-group>
+                          <b-form-group
+                            label="Start Date"
+                            label-for="start-date"
+                          >
+                            <flat-pickr
+                              v-model="startDate"
+                              class="form-control"
+                              placeholder="Start Date"
+                              :config="{ enableTime: true, dateFormat: 'Y-m-d H:i'}"
+                            />
+                          </b-form-group>
+                          <b-form-group
+                            label="End Date"
+                            label-for="end-date"
+                          >
+                            <flat-pickr
+                              v-model="endDate"
+                              class="form-control"
+                              placeholder="End Date"
+                              :config="{ enableTime: true, dateFormat: 'Y-m-d H:i'}"
                             />
                           </b-form-group>
                           <b-form-group
                             label="Program Department"
                             label-for="programDepartment"
                           >
-                            <b-form-input
-                              id="programDepartment"
-                              size="lg"
-                              placeholder="Program Department"
+                            <v-select
+                              v-model="item.itemTitle"
+                              :options="itemsOptions"
+                              label="itemTitle"
+                              :clearable="false"
+                              class="mb-2 item-selector-title"
+                              placeholder="Select Department"
                             />
+
                           </b-form-group>
                         </b-col>
                         <b-col
@@ -175,10 +201,10 @@
                           <b-form-group
                             label="Tution Fee"
                             label-for="tutionFee"
-                            class=""
                           >
                             <b-form-input
                               id="tutionFee"
+                              v-model="tutionFee"
                               size="lg"
                               placeholder="Tution Fee"
                             />
@@ -188,29 +214,35 @@
                             label-for="ApplicationFee"
                           >
                             <b-form-input
-                              id="ApplicationFee"
+                              id="applicationFee"
+                              v-model="applicationFee"
                               size="lg"
                               placeholder="Application Fee"
                             />
                           </b-form-group>
                           <b-form-group
-                            label="Tution Fee"
-                            label-for="tutionFee"
+                            label="Academic Requierments"
+                            label-for="academicRequierments"
                           >
-                            <b-form-input
-                              id="tutionFee"
+                            <b-form-textarea
+                              id="academicRequierments"
                               size="lg"
-                              placeholder="Tution Fee"
+                              placeholder="Academic Requierments"
                             />
                           </b-form-group>
-                          <label class="d-inline d-lg-none">Summary</label>
-                          <b-form-textarea
-                            v-model="item.description"
-                            placeholder="Program Summary"
-                            class="mt-2 mb-lg-0"
-                          />
+                          <b-form-group
+                            label="Program Summary"
+                            label-for="programSummary"
+                          >
+                            <b-form-textarea
+                              id="programSummary"
+                              size="lg"
+                              placeholder="Program Summary"
+                            />
+                          </b-form-group>
                         </b-col>
                       </b-row>
+                      <!-- Item Remove -->
                       <div class="d-flex flex-column justify-content-between border-left py-50 px-25">
                         <feather-icon
                           size="16"
@@ -218,89 +250,6 @@
                           class="cursor-pointer"
                           @click="removeItem(index)"
                         />
-                        <feather-icon
-                          :id="`form-item-settings-icon-${index}`"
-                          size="16"
-                          icon="SettingsIcon"
-                          class="cursor-pointer"
-                        />
-
-                        <!-- Setting Item Form -->
-                        <b-popover
-                          :ref="`form-item-settings-popover-${index}`"
-                          :target="`form-item-settings-icon-${index}`"
-                          triggers="click"
-                          placement="lefttop"
-                        >
-                          <b-form @submit.prevent>
-                            <b-row>
-
-                              <!-- Field: Discount -->
-                              <b-col cols="12">
-                                <b-form-group
-                                  label="Discount(%)"
-                                  :label-for="`setting-item-${index}-discount`"
-                                >
-                                  <b-form-input
-                                    :id="`setting-item-${index}-discount`"
-                                    :value="null"
-                                    type="number"
-                                  />
-                                </b-form-group>
-                              </b-col>
-
-                              <!-- Field: Tax 1 -->
-                              <b-col cols="6">
-                                <b-form-group
-                                  label="Tax 1"
-                                  :label-for="`setting-item-${index}-tax-1`"
-                                >
-                                  <v-select
-                                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                                    :value="'10%'"
-                                    :options="['0%', '1%', '10%', '14%', '18%']"
-                                    :input-id="`setting-item-${index}-tax-1`"
-                                    :clearable="false"
-                                  />
-                                </b-form-group>
-                              </b-col>
-
-                              <!-- Field: Tax 2 -->
-                              <b-col cols="6">
-                                <b-form-group
-                                  label="Tax 2"
-                                  :label-for="`setting-item-${index}-tax-2`"
-                                >
-                                  <v-select
-                                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                                    :value="'10%'"
-                                    :options="['0%', '1%', '10%', '14%', '18%']"
-                                    :input-id="`setting-item-${index}-tax-2`"
-                                    :clearable="false"
-                                  />
-                                </b-form-group>
-                              </b-col>
-
-                              <b-col
-                                cols="12"
-                                class="d-flex justify-content-between mt-1"
-                              >
-                                <b-button
-                                  variant="outline-primary"
-                                  @click="() => {$refs[`form-item-settings-popover-${index}`][0].$emit('close')}"
-                                >
-                                  Apply
-                                </b-button>
-                                <b-button
-                                  variant="outline-secondary"
-                                  @click="() => {$refs[`form-item-settings-popover-${index}`][0].$emit('close')}"
-                                >
-                                  Cancel
-                                </b-button>
-                              </b-col>
-                            </b-row>
-                          </b-form>
-                        </b-popover>
                       </div>
                     </div>
                   </b-col>
@@ -314,11 +263,20 @@
               >
                 Add Programs
               </b-button>
+              <b-col
+                cols="12"
+              >
+                <b-button
+                  v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+                  type="submit"
+                  class="mt-2 "
+                  variant="primary"
+                  @click="saveUniversity"
+                >
+                  Submit
+                </b-button>
+              </b-col>
             </b-card-body>
-
-            <!-- Spacer -->
-            <hr class="invoice-spacing">
-
           </b-card>
         </b-form>
       </b-col>
@@ -334,17 +292,24 @@ import { heightTransition } from '@core/mixins/ui/transition'
 import Ripple from 'vue-ripple-directive'
 import store from '@/store'
 import {
-  BRow, BCol, BCard, BCardBody, BButton, BCardText, BForm, BFormGroup, BFormInput, BInputGroup, BInputGroupPrepend, BFormTextarea, BFormCheckbox, BPopover, VBToggle,
+  BFormFile, BRow, BCol, BCard, BCardBody, BButton, BCardText, BForm, BFormGroup, BFormInput, BInputGroup, BInputGroupPrepend, BFormTextarea, BFormCheckbox, BPopover, VBToggle,
 } from 'bootstrap-vue'
 import vSelect from 'vue-select'
 import flatPickr from 'vue-flatpickr-component'
-import QuillEditorSnow from '../../../forms/form-element/quill-editor/QuillEditorSnow.vue'
+import { quillEditor } from 'vue-quill-editor'
 import invoiceStoreModule from '../invoiceStoreModule'
 import InvoiceSidebarAddNewCustomer from '../InvoiceSidebarAddNewCustomer.vue'
+// eslint-disable-next-line
+import 'quill/dist/quill.core.css'
+// eslint-disable-next-line
+import 'quill/dist/quill.snow.css'
+// eslint-disable-next-line
+import 'quill/dist/quill.bubble.css'
 
 export default {
   components: {
-    QuillEditorSnow,
+    BFormFile,
+    quillEditor,
     BRow,
     BCol,
     BCard,
@@ -370,6 +335,36 @@ export default {
 
   },
   mixins: [heightTransition],
+  data() {
+    return {
+      universityName: '',
+      foundedYears: '',
+      universityType: '',
+      files: [],
+      universityDescription: '',
+      programName: '',
+      programIntake: '',
+      startDate: '',
+      endDate: '',
+      tutionFee: '',
+      applicationFee: '',
+      value: '',
+      context: null,
+      selected: null,
+      options: [
+        { value: null, text: 'Please select an option' },
+        { value: 'a', text: 'This is First option' },
+        { value: 'b', text: 'Selected Option', disabled: true },
+        {
+          label: 'Grouped options',
+          options: [
+            { value: { C: '3PO' }, text: 'Option with object value' },
+            { value: { R: '2D2' }, text: 'Another option with object value' },
+          ],
+        },
+      ],
+    }
+  },
   mounted() {
     this.initTrHeight()
   },
@@ -380,6 +375,12 @@ export default {
     window.removeEventListener('resize', this.initTrHeight)
   },
   methods: {
+    saveUniversity() {
+      console.warn('description'.this.startDate)
+    },
+    onContext(ctx) {
+      this.context = ctx
+    },
     addNewItemInItemForm() {
       this.$refs.form.style.overflow = 'hidden'
       this.invoiceData.items.push(JSON.parse(JSON.stringify(this.itemFormBlankItem)))
@@ -438,37 +439,18 @@ export default {
 
     const itemsOptions = [
       {
-        itemTitle: 'App Design',
-        cost: 24,
-        qty: 1,
-        description: 'Designed UI kit & app pages.',
+        itemTitle: 'Computer Science',
       },
       {
-        itemTitle: 'App Customization',
-        cost: 26,
-        qty: 1,
-        description: 'Customization & Bug Fixes.',
+        itemTitle: 'Electrical Engineering',
       },
       {
-        itemTitle: 'ABC Template',
-        cost: 28,
-        qty: 1,
-        description: 'Bootstrap 4 admin template.',
+        itemTitle: 'Civil Engineering',
       },
       {
-        itemTitle: 'App Development',
-        cost: 32,
-        qty: 1,
-        description: 'Native App Development.',
+        itemTitle: 'Architect',
       },
     ]
-
-    const updateItemForm = (index, val) => {
-      const { cost, qty, description } = val
-      invoiceData.value.items[index].cost = cost
-      invoiceData.value.items[index].qty = qty
-      invoiceData.value.items[index].description = description
-    }
 
     const paymentMethods = [
       'Bank Account',
@@ -480,7 +462,6 @@ export default {
       invoiceData,
       clients,
       itemsOptions,
-      updateItemForm,
       itemFormBlankItem,
       paymentMethods,
     }

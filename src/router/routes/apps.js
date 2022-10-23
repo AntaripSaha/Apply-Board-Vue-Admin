@@ -249,7 +249,7 @@ export default [
   {
     path: '/apps/university/add/',
     name: 'apps-university-add',
-    component: () => import('@/views/apps/university/invoice-add/InvoiceAdd.vue'),
+    component: () => import('@/views/apps/university/university-add/universityAdd.vue'),
   },
   {
     path: '/apps/university/edit/:id',

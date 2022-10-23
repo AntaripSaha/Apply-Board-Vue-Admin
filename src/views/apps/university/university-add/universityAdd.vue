@@ -1,12 +1,13 @@
 <template>
   <section class="invoice-add-wrapper">
+
     <b-row class="invoice-add">
 
       <!-- Col: Left (Invoice Container) -->
       <b-col
         cols="12"
-        xl="9"
-        md="8"
+        xl="12"
+        md="12"
       >
         <b-form @submit.prevent>
           <b-card
@@ -24,23 +25,21 @@
                 University Informations
               </h3>
               <b-row class="invoice-spacing">
-
                 <!-- Col: Invoice To -->
                 <b-col
                   cols="12"
                   xl="6"
                   class="mb-lg-1"
                 >
-
                   <!-- University Informations-->
                   <b-form-group
                     label="University Name"
-                    label-for="largeInput"
+                    label-for="name"
                   >
                     <b-form-input
-                      id="largeInput"
+                      id="name"
                       size="lg"
-                      placeholder="Large Input"
+                      placeholder="University Name"
                     />
                   </b-form-group>
                   <b-form-group
@@ -50,37 +49,17 @@
                     <b-form-input
                       id="foundedyears"
                       size="lg"
-                      placeholder="Large Input"
+                      placeholder="Founded Years"
                     />
                   </b-form-group>
                   <b-form-group
-                    label="School ID"
+                    label="Institution Type"
                     label-for="largeInput"
                   >
                     <b-form-input
-                      id="largeInput"
+                      id="InstitutionType"
                       size="lg"
-                      placeholder="Large Input"
-                    />
-                  </b-form-group>
-                  <b-form-group
-                    label="Provider ID"
-                    label-for="largeInput"
-                  >
-                    <b-form-input
-                      id="largeInput"
-                      size="lg"
-                      placeholder="Large Input"
-                    />
-                  </b-form-group>
-                  <b-form-group
-                    label="Identification Type"
-                    label-for="largeInput"
-                  >
-                    <b-form-input
-                      id="largeInput"
-                      size="lg"
-                      placeholder="Large Input"
+                      placeholder="Institution Type"
                     />
                   </b-form-group>
                 </b-col>
@@ -98,29 +77,10 @@
                       size="lg"
                       placeholder="Application Fees"
                     />
-                  </b-form-group><b-form-group
-                    label="Avg. Graduate Program"
-                    label-for="largeInput"
-                  >
-                    <b-form-input
-                      id="largeInput"
-                      size="lg"
-                      placeholder="Large Input"
-                    />
-                  </b-form-group><b-form-group
-                    label="Avg. Under Graduate Program"
-                    label-for="largeInput"
-                  >
-                    <b-form-input
-                      id="largeInput"
-                      size="lg"
-                      placeholder="Large Input"
-                    />
                   </b-form-group>
                   <quill-editor-snow />
                 </b-col>
               </b-row>
-
             </b-card-body>
 
             <!-- Items Section -->
@@ -140,49 +100,18 @@
                   <!-- Item Form -->
                   <!-- ? This will be in loop => So consider below markup for single item -->
                   <b-col cols="12">
-
+                    <h4>Program</h4>
                     <!-- ? Flex to keep separate width for XIcon and SettingsIcon -->
-                    <div class="d-none d-lg-flex">
-                      <b-row class="flex-grow-1 px-1">
-                        <!-- Single Item Form Headers -->
-                        <b-col
-                          cols="12"
-                          lg="5"
-                        >
-                          Item
-                        </b-col>
-                        <b-col
-                          cols="12"
-                          lg="3"
-                        >
-                          Cost
-                        </b-col>
-                        <b-col
-                          cols="12"
-                          lg="2"
-                        >
-                          Qty
-                        </b-col>
-                        <b-col
-                          cols="12"
-                          lg="2"
-                        >
-                          Price
-                        </b-col>
-                      </b-row>
-                      <div class="form-item-action-col" />
-                    </div>
-
                     <!-- Form Input Fields OR content inside bordered area  -->
                     <!-- ? Flex to keep separate width for XIcon and SettingsIcon -->
+
                     <div class="d-flex border rounded">
                       <b-row class="flex-grow-1 p-2">
                         <!-- Single Item Form Headers -->
-                        <b-col
+                        <!-- <b-col
                           cols="12"
                           lg="5"
                         >
-                          <label class="d-inline d-lg-none">Item</label>
                           <v-select
                             v-model="item.itemTitle"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -193,52 +122,93 @@
                             placeholder="Select Item"
                             @input="val => updateItemForm(index, val)"
                           />
+                        </b-col> -->
+                        <b-col
+                          cols="12"
+                          lg="6"
+                        >
+                          <b-form-group
+                            label="Program Name"
+                            label-for="programName"
+                          >
+                            <b-form-input
+                              id="programName"
+                              size="lg"
+                              placeholder="Program Name"
+                            />
+                          </b-form-group>
+                          <b-form-group
+                            label="Program Level"
+                            label-for="programLevel"
+                          >
+                            <b-form-input
+                              id="programLevel"
+                              size="lg"
+                              placeholder="Program Level"
+                            />
+                          </b-form-group>
+                          <b-form-group
+                            label="Program Intake"
+                            label-for="programIntake"
+                          >
+                            <b-form-input
+                              id="programIntake"
+                              size="lg"
+                              placeholder="Program Intake"
+                            />
+                          </b-form-group>
+                          <b-form-group
+                            label="Program Department"
+                            label-for="programDepartment"
+                          >
+                            <b-form-input
+                              id="programDepartment"
+                              size="lg"
+                              placeholder="Program Department"
+                            />
+                          </b-form-group>
                         </b-col>
                         <b-col
                           cols="12"
-                          lg="3"
+                          lg="6"
                         >
-                          <label class="d-inline d-lg-none">Cost</label>
-                          <b-form-input
-                            v-model="item.cost"
-                            type="number"
-                            class="mb-2"
-                          />
-                        </b-col>
-                        <b-col
-                          cols="12"
-                          lg="2"
-                        >
-                          <label class="d-inline d-lg-none">Qty</label>
-                          <b-form-input
-                            v-model="item.qty"
-                            type="number"
-                            class="mb-2"
-                          />
-                        </b-col>
-                        <b-col
-                          cols="12"
-                          lg="2"
-                        >
-                          <label class="d-inline d-lg-none">Price</label>
-                          <p class="mb-1">
-                            ${{ item.cost * item.qty }}
-                          </p>
-                        </b-col>
-                        <b-col
-                          cols="12"
-                          lg="5"
-                        >
-                          <label class="d-inline d-lg-none">Description</label>
+                          <b-form-group
+                            label="Tution Fee"
+                            label-for="tutionFee"
+                            class=""
+                          >
+                            <b-form-input
+                              id="tutionFee"
+                              size="lg"
+                              placeholder="Tution Fee"
+                            />
+                          </b-form-group>
+                          <b-form-group
+                            label="Application Fee"
+                            label-for="ApplicationFee"
+                          >
+                            <b-form-input
+                              id="ApplicationFee"
+                              size="lg"
+                              placeholder="Application Fee"
+                            />
+                          </b-form-group>
+                          <b-form-group
+                            label="Tution Fee"
+                            label-for="tutionFee"
+                          >
+                            <b-form-input
+                              id="tutionFee"
+                              size="lg"
+                              placeholder="Tution Fee"
+                            />
+                          </b-form-group>
+                          <label class="d-inline d-lg-none">Summary</label>
                           <b-form-textarea
                             v-model="item.description"
-                            class="mb-2 mb-lg-0"
+                            placeholder="Program Summary"
+                            class="mt-2 mb-lg-0"
                           />
-                        </b-col>
-                        <b-col>
-                          <p class="mb-0">
-                            Discount: 0% 0% 0%
-                          </p>
                         </b-col>
                       </b-row>
                       <div class="d-flex flex-column justify-content-between border-left py-50 px-25">
@@ -342,181 +312,15 @@
                 variant="primary"
                 @click="addNewItemInItemForm"
               >
-                Add Item
+                Add Programs
               </b-button>
-            </b-card-body>
-
-            <!-- Invoice Description: Total -->
-            <b-card-body class="invoice-padding pb-0">
-              <b-row>
-
-                <!-- Col: Sales Persion -->
-                <b-col
-                  cols="12"
-                  md="6"
-                  class="mt-md-0 mt-3 d-flex align-items-center"
-                  order="2"
-                  order-md="1"
-                >
-                  <label
-                    for="invoice-data-sales-person"
-                    class="text-nowrap mr-50"
-                  >Sales Person:</label>
-                  <b-form-input
-                    id="invoice-data-sales-person"
-                    v-model="invoiceData.salesPerson"
-                    placeholder="Edward Crowley"
-                  />
-                </b-col>
-
-                <!-- Col: Total -->
-                <b-col
-                  cols="12"
-                  md="6"
-                  class="mt-md-6 d-flex justify-content-end"
-                  order="1"
-                  order-md="2"
-                >
-                  <div class="invoice-total-wrapper">
-                    <div class="invoice-total-item">
-                      <p class="invoice-total-title">
-                        Subtotal:
-                      </p>
-                      <p class="invoice-total-amount">
-                        $1800
-                      </p>
-                    </div>
-                    <div class="invoice-total-item">
-                      <p class="invoice-total-title">
-                        Discount:
-                      </p>
-                      <p class="invoice-total-amount">
-                        $28
-                      </p>
-                    </div>
-                    <div class="invoice-total-item">
-                      <p class="invoice-total-title">
-                        Tax:
-                      </p>
-                      <p class="invoice-total-amount">
-                        21%
-                      </p>
-                    </div>
-                    <hr class="my-50">
-                    <div class="invoice-total-item">
-                      <p class="invoice-total-title">
-                        Total:
-                      </p>
-                      <p class="invoice-total-amount">
-                        $1690
-                      </p>
-                    </div>
-                  </div>
-                </b-col>
-              </b-row>
             </b-card-body>
 
             <!-- Spacer -->
             <hr class="invoice-spacing">
 
-            <!-- Note -->
-            <b-card-body class="invoice-padding pt-0">
-              <span class="font-weight-bold">Note: </span>
-              <b-form-textarea v-model="invoiceData.note" />
-            </b-card-body>
           </b-card>
         </b-form>
-      </b-col>
-
-      <!-- Right Col: Card -->
-      <b-col
-        cols="12"
-        md="4"
-        xl="3"
-        class="invoice-actions mt-md-0 mt-2"
-      >
-
-        <!-- Action Buttons -->
-        <b-card>
-
-          <!-- Button: Send Invoice -->
-          <b-button
-            v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-            variant="primary"
-            class="mb-75"
-            block
-            disabled
-          >
-            Send Invoice
-          </b-button>
-
-          <!-- Button: DOwnload -->
-          <b-button
-            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-            variant="outline-primary"
-            class="mb-75"
-            block
-          >
-            Preview
-          </b-button>
-
-          <!-- Button: Print -->
-          <b-button
-            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-            variant="outline-primary"
-            block
-          >
-            Save
-          </b-button>
-        </b-card>
-
-        <!-- Payment Method -->
-        <div class="mt-2">
-          <b-form-group
-            label="Accept Payment Via"
-            label-for="payment-method"
-          >
-            <v-select
-              v-model="invoiceData.paymentMethod"
-              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-              :options="paymentMethods"
-              input-id="payment-method"
-              class="payment-selector"
-              :clearable="false"
-            />
-          </b-form-group>
-
-          <!-- ? Below values are not adding invoiceData to keep invoiceData more generic and less confusing  -->
-
-          <!-- Payment Terms -->
-          <div class="d-flex justify-content-between align-items-center">
-            <label for="patymentTerms">Payment Terms</label>
-            <b-form-checkbox
-              id="patymentTerms"
-              :checked="true"
-              switch
-            />
-          </div>
-
-          <!-- Client Notes -->
-          <div class="d-flex justify-content-between align-items-center my-1">
-            <label for="clientNotes">Client Notes</label>
-            <b-form-checkbox
-              id="clientNotes"
-              :checked="true"
-              switch
-            />
-          </div>
-
-          <!-- Payment Stub -->
-          <div class="d-flex justify-content-between align-items-center">
-            <label for="paymentStub">Payment Stub</label>
-            <b-form-checkbox
-              id="paymentStub"
-              switch
-            />
-          </div>
-        </div>
       </b-col>
     </b-row>
     <invoice-sidebar-add-new-customer />

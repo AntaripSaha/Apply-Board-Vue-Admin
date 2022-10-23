@@ -44,7 +44,11 @@ export default [
         route: 'apps-university-list',
       },
       {
-        title: 'Add',
+        title: 'Add Department',
+        route: { name: 'apps-department-add' },
+      },
+      {
+        title: 'Add University',
         route: { name: 'apps-university-add' },
       },
     ],

@@ -252,6 +252,11 @@ export default [
     component: () => import('@/views/apps/university/university-add/universityAdd.vue'),
   },
   {
+    path: '/apps/department/add/',
+    name: 'apps-department-add',
+    component: () => import('@/views/apps/university/department/departmentAdd.vue'),
+  },
+  {
     path: '/apps/university/edit/:id',
     name: 'apps-university-edit',
     component: () => import('@/views/apps/university/invoice-edit/InvoiceEdit.vue'),

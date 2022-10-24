@@ -67,7 +67,8 @@
         </b-form>
       </b-col>
     </b-row>
-    <invoice-sidebar-add-new-customer />
+    <List />
+
   </section>
 </template>
 
@@ -76,9 +77,11 @@ import Ripple from 'vue-ripple-directive'
 import {
   BRow, BCol, BCard, BCardBody, BButton, BForm, BFormGroup, BFormInput, VBToggle,
 } from 'bootstrap-vue'
+import List from '../invoice-list/InvoiceList.vue'
 
 export default {
   components: {
+    List,
     BRow,
     BCol,
     BCard,
@@ -91,7 +94,6 @@ export default {
   directives: {
     Ripple,
     'b-toggle': VBToggle,
-
   },
   data() {
     return {

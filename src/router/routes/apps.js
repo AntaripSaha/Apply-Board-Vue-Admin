@@ -265,7 +265,7 @@ export default [
   {
     path: '/apps/program/list',
     name: 'apps-program-list',
-    component: () => import('@/views/apps/invoice/invoice-list/InvoiceList.vue'),
+    component: () => import('@/views/apps/program/program-list/InvoiceList.vue'),
   },
   {
     path: '/apps/program/preview/:id',
@@ -275,7 +275,7 @@ export default [
   {
     path: '/apps/program/add/',
     name: 'apps-program-add',
-    component: () => import('@/views/apps/invoice/invoice-add/InvoiceAdd.vue'),
+    component: () => import('@/views/apps/program/program-add/ProgramAdd.vue'),
   },
   {
     path: '/apps/program/edit/:id',

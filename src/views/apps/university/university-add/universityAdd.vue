@@ -90,8 +90,81 @@
                   </template>
                 </b-col>
               </b-row>
-            </b-card-body>
+              <h4 class="mb-2">
+                University Features
+              </h4>
+              <b-row
+                v-for="(item, index) in items"
+                :id="item.id"
+                :key="item.id"
+                ref="row"
+              >
 
+                <!-- Item Name -->
+                <b-col md="4">
+                  <b-form-group
+                    label="Feature Title"
+                    label-for="feature-title"
+                  >
+                    <b-form-input
+                      id="feature-title"
+                      v-model="item.featureTitle"
+                      type="text"
+                      placeholder="Enter Feature Title"
+                    />
+                  </b-form-group>
+                </b-col>
+
+                <!-- Cost -->
+                <b-col md="6">
+                  <b-form-group
+                    label="Feature Description"
+                    label-for="description"
+                  >
+                    <b-form-textarea
+                      id="textarea-rows"
+                      v-model="item.featureDescription"
+                      placeholder="Description of the Feature"
+                      rows="3"
+                    />
+                  </b-form-group>
+                </b-col>
+
+                <!-- Remove Button -->
+                <b-col
+                  lg="2"
+                  md="3"
+                  class="mb-50"
+                >
+                  <b-button
+                    v-ripple.400="'rgba(234, 84, 85, 0.15)'"
+                    variant="outline-danger"
+                    class="mt-0 mt-md-2"
+                    @click="removeItem(index)"
+                  >
+                    <feather-icon
+                      icon="XIcon"
+                      class="mr-25"
+                    />
+                    <span>Delete</span>
+                  </b-button>
+                </b-col>
+              </b-row>
+              <b-button
+                v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+                variant="primary"
+                @click="repeateAgain"
+              >
+                <feather-icon
+                  icon="PlusIcon"
+                  class="mr-25"
+                />
+                <span>Add New</span>
+              </b-button>
+            </b-card-body>
+            <b-col cols="12">
+              <hr>
+            </b-col>
             <!-- Items Section -->
             <b-card-body class="invoice-padding form-item-section">
               <b-col
@@ -112,6 +185,7 @@
         </b-form>
       </b-col>
     </b-row>
+
     <invoice-sidebar-add-new-customer />
   </section>
 </template>
@@ -128,7 +202,7 @@ import {
 import vSelect from 'vue-select'
 import flatPickr from 'vue-flatpickr-component'
 import { quillEditor } from 'vue-quill-editor'
-import invoiceStoreModule from '../invoiceStoreModule'
+// import invoiceStoreModule from '../invoiceStoreModule'
 import InvoiceSidebarAddNewCustomer from '../InvoiceSidebarAddNewCustomer.vue'
 // eslint-disable-next-line
 import 'quill/dist/quill.core.css'
@@ -168,6 +242,13 @@ export default {
   mixins: [heightTransition],
   data() {
     return {
+      items: [{
+        id: 1,
+        featureTitle: '',
+        featureDescription: '',
+        prevHeight: 0,
+      }],
+      nextTodoId: 2,
       universityName: '',
       foundedYears: '',
       universityType: '',
@@ -207,24 +288,23 @@ export default {
   },
   methods: {
     saveUniversity() {
+      console.warn(this.items)
       console.warn('description'.this.startDate)
     },
     onContext(ctx) {
       this.context = ctx
     },
-    addNewItemInItemForm() {
-      this.$refs.form.style.overflow = 'hidden'
-      this.invoiceData.items.push(JSON.parse(JSON.stringify(this.itemFormBlankItem)))
+    repeateAgain() {
+      this.items.push({
+        id: this.nextTodoId += this.nextTodoId,
+      })
 
       this.$nextTick(() => {
         this.trAddHeight(this.$refs.row[0].offsetHeight)
-        setTimeout(() => {
-          this.$refs.form.style.overflow = null
-        }, 350)
       })
     },
     removeItem(index) {
-      this.invoiceData.items.splice(index, 1)
+      this.items.splice(index, 1)
       this.trTrimHeight(this.$refs.row[0].offsetHeight)
     },
     initTrHeight() {
@@ -235,39 +315,6 @@ export default {
     },
   },
   setup() {
-    const INVOICE_APP_STORE_MODULE_NAME = 'app-invoice'
-
-    // Register module
-    if (!store.hasModule(INVOICE_APP_STORE_MODULE_NAME)) store.registerModule(INVOICE_APP_STORE_MODULE_NAME, invoiceStoreModule)
-
-    // UnRegister on leave
-    onUnmounted(() => {
-      if (store.hasModule(INVOICE_APP_STORE_MODULE_NAME)) store.unregisterModule(INVOICE_APP_STORE_MODULE_NAME)
-    })
-
-    const clients = ref([])
-    store.dispatch('app-invoice/fetchClients')
-      .then(response => { clients.value = response.data })
-
-    const itemFormBlankItem = {
-      item: null,
-      cost: 0,
-      qty: 0,
-      description: '',
-    }
-
-    const invoiceData = ref({
-      id: 5037,
-      client: null,
-
-      // ? Set single Item in form for adding data
-      items: [JSON.parse(JSON.stringify(itemFormBlankItem))],
-
-      salesPerson: '',
-      note: 'It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance projects. Thank You!',
-      paymentMethod: null,
-    })
-
     const itemsOptions = [
       {
         itemTitle: 'Computer Science',
@@ -283,22 +330,18 @@ export default {
       },
     ]
 
-    const paymentMethods = [
-      'Bank Account',
-      'PayPal',
-      'UPI Transfer',
-    ]
-
     return {
-      invoiceData,
-      clients,
       itemsOptions,
-      itemFormBlankItem,
-      paymentMethods,
     }
   },
 }
 </script>
+<style lang="scss" scoped>
+.repeater-form {
+  overflow: hidden;
+  transition: .35s height;
+}
+</style>
 
 <style lang="scss">
 @import '@core/scss/vue/libs/vue-select.scss';
